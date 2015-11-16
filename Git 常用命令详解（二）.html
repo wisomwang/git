@@ -1,0 +1,1664 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0044)http://www.oschina.net/question/565065_86025 -->
+<html lang="zh-CN" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="shortcut icon" type="image/x-icon" href="http://www.oschina.net/img/favicon.ico?t=1445088797000">
+  <title>Git 常用命令详解（二） - 开源中国社区</title>
+      <link rel="stylesheet" href="./Git 常用命令详解（二）_files/style2013.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="./Git 常用命令详解（二）_files/channel.css" type="text/css" media="screen">
+  <link rel="stylesheet" type="text/css" href="./Git 常用命令详解（二）_files/jquery.fancybox-1.3.4.css" media="screen">
+  <link rel="alternate" type="application/rss+xml" title="最新开源项目" href="http://www.oschina.net/project/rss">
+  <link rel="alternate" type="application/rss+xml" title="最新开源资讯" href="http://www.oschina.net/news/rss">
+  <link rel="alternate" type="application/rss+xml" title="最新问题列表" href="http://www.oschina.net/question/rss">
+  <link rel="alternate" type="application/rss+xml" title="最新翻译列表" href="http://www.oschina.net/translate/rss">
+  <link rel="alternate" type="application/rss+xml" title="最新博客列表" href="http://www.oschina.net/blog/rss">
+  <link rel="alternate" type="application/rss+xml" title="最新代码分享列表" href="http://www.oschina.net/code/rss">
+  <link rel="alternate" type="application/rss+xml" title="开源中国 - 源码列表" href="http://www.oschina.net/code/source_rss">
+    <!--添加emoji支持-->
+    <link rel="stylesheet" type="text/css" href="./Git 常用命令详解（二）_files/nature.css">
+    <link rel="stylesheet" type="text/css" href="./Git 常用命令详解（二）_files/object.css">
+    <link rel="stylesheet" type="text/css" href="./Git 常用命令详解（二）_files/people.css">
+    <link rel="stylesheet" type="text/css" href="./Git 常用命令详解（二）_files/place.css">
+    <link rel="stylesheet" type="text/css" href="./Git 常用命令详解（二）_files/Sysmbols.css">
+    <link rel="stylesheet" type="text/css" href="./Git 常用命令详解（二）_files/twemoji.css">
+
+  <script type="text/javascript" src="./Git 常用命令详解（二）_files/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="./Git 常用命令详解（二）_files/jquery.form.js"></script>
+  <script type="text/javascript" src="./Git 常用命令详解（二）_files/jquery.fancybox-fixed.js"></script>
+    <link rel="stylesheet" href="./Git 常用命令详解（二）_files/tip-yellowsimple.css" type="text/css">
+  <script type="text/javascript" src="./Git 常用命令详解（二）_files/jquery.poshytip.min.js"></script>
+  <script type="text/javascript">
+  	g_user = {
+	id:0,
+	name:'',
+	login:false};  </script>
+    <script type="text/javascript" src="./Git 常用命令详解（二）_files/oschina.js"></script>
+  <script type="text/javascript" src="./Git 常用命令详解（二）_files/utils.js"></script>
+  <script type="text/javascript" src="./Git 常用命令详解（二）_files/channel.js"></script>
+    <style id="poshytip-css-tip-yellowsimple" type="text/css">div.tip-yellowsimple{visibility:hidden;position:absolute;top:0;left:0;}div.tip-yellowsimple table, div.tip-yellowsimple td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-yellowsimple td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-yellowsimple td.tip-right{background-position:100% 0;}div.tip-yellowsimple td.tip-bottom{background-position:100% 100%;}div.tip-yellowsimple td.tip-left{background-position:0 100%;}div.tip-yellowsimple div.tip-inner{background-position:-10px -10px;}div.tip-yellowsimple div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}</style><style id="poshytip-css-tip-yellowsimple question-tag" type="text/css">div.tip-yellowsimple question-tag{visibility:hidden;position:absolute;top:0;left:0;}div.tip-yellowsimple question-tag table, div.tip-yellowsimple question-tag td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-yellowsimple question-tag td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-yellowsimple question-tag td.tip-right{background-position:100% 0;}div.tip-yellowsimple question-tag td.tip-bottom{background-position:100% 100%;}div.tip-yellowsimple question-tag td.tip-left{background-position:0 100%;}div.tip-yellowsimple question-tag div.tip-inner{background-position:-10px -10px;}div.tip-yellowsimple question-tag div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}</style><style id="poshytip-css-tip-yellowsimple question-tag" type="text/css">div.tip-yellowsimple question-tag{visibility:hidden;position:absolute;top:0;left:0;}div.tip-yellowsimple question-tag table, div.tip-yellowsimple question-tag td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-yellowsimple question-tag td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-yellowsimple question-tag td.tip-right{background-position:100% 0;}div.tip-yellowsimple question-tag td.tip-bottom{background-position:100% 100%;}div.tip-yellowsimple question-tag td.tip-left{background-position:0 100%;}div.tip-yellowsimple question-tag div.tip-inner{background-position:-10px -10px;}div.tip-yellowsimple question-tag div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}</style><link href="./Git 常用命令详解（二）_files/default.css" rel="stylesheet"><link href="./Git 常用命令详解（二）_files/oschina.css" rel="stylesheet"></head>
+<body>
+<div id="OSC_NavTop">
+	<div class="wp998">
+        <div id="OSC_Channels">
+        	<ul>
+        	<li class="item"><a href="http://www.oschina.net/" class="home">首页</a></li>        	<li class="item control_select"><a href="http://www.oschina.net/project" class="project">开源项目</a>
+				<ul class="cs_content" style="display: none;">
+					<li><a href="http://www.oschina.net/project/zh">国产开源项目</a></li>
+					<li><a href="http://www.oschina.net/project/tags">项目分类</a></li>
+					<li><a href="http://www.oschina.net/project/list?sort=time">最新收录项目</a></li>
+					<li class="split"></li>
+                	                	<li><a href="http://www.oschina.net/project/lang/19/java">Java 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/194/csharp">C# 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/22/php">PHP 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/21/c">C/C++ 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/26/ruby">Ruby 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/25/python">Python 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/358/go">Go开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/28/javascript">JS开源软件</a></li>
+				</ul>
+			</li>
+        	<li class="item control_select">
+				<a href="http://www.oschina.net/question" class="question hl">问答</a>
+				<ul class="cs_content" style="display: none;">
+                	<li><a href="http://www.oschina.net/question?catalog=1"> 技术问答 » </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=2"> 技术分享 » </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=3"> IT大杂烩 » </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=100"> 职业生涯 » </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=4"> 站务/建议 » </a></li>
+                	<li><a href="http://www.oschina.net/alipay"> 支付宝专区 » </a></li>
+                	<li><a href="http://www.oschina.net/mopaas"> MoPaaS专区 » </a></li>
+                	<li><a href="http://www.oschina.net/hardware"> 开源硬件专区 » </a></li>
+				</ul>
+			</li>
+        	<li class="item"><a href="http://www.oschina.net/code/list" class="code">代码</a></li>
+        	        	<li class="item"><a href="http://www.oschina.net/blog" class="blog">博客</a></li>
+        	<li class="item"><a href="http://www.oschina.net/translate" class="tran">翻译</a></li>
+            <li class="item"><a href="http://www.oschina.net/news" class="news">资讯</a></li>
+        	<li class="item control_select">
+				<a href="http://www.oschina.net/android" class="mobile">专题</a>
+				<ul class="cs_content cs_mobile">
+        			<li><a href="http://www.oschina.net/events" style="color:#c00">源创会</a> <a href="http://www.oschina.net/video">视频</a></li>
+        			<li><a href="http://www.oschina.net/question/tag/%E9%AB%98%E6%89%8B%E9%97%AE%E7%AD%94">高手问答</a> <a href="http://www.oschina.net/question/tag/%E5%BC%80%E6%BA%90%E8%AE%BF%E8%B0%88">访谈</a></li>
+        			<li><a href="http://www.oschina.net/question/tag/%E5%BC%80%E6%BA%90%E5%91%A8%E5%88%8A">周刊</a> <a href="http://my.oschina.net/xxiaobian/blog?catalog=547834">乱弹</a></li>
+            		<li class="split"></li>
+                	<li class="android_"><a href="http://www.oschina.net/android">Android开发专区</a></li>
+                	<li class="ios_"><a href="http://www.oschina.net/ios/home">iOS开发专区</a></li>
+                	<li class="ios_"><a href="http://www.oschina.net/ios/codingList">iOS代码库</a></li>
+                	<li class="wp7_"><a href="http://www.oschina.net/wp">Windows Phone</a></li>
+					
+				</ul>
+			</li>
+        	        										            <li class="item control_select">
+                <a href="http://city.oschina.net/" id="MyCities" title="城市圈">城市圈</a>
+							</li>
+        	</ul>
+        </div>
+		<div id="OSC_Userbar">
+                		    		当前访客身份：游客 [ <a href="http://www.oschina.net/home/login?goto_page=http%3A%2F%2Fwww.oschina.net%2Fquestion%2F565065_86025">登录</a> | <a href="http://www.oschina.net/home/reg">加入开源中国</a> ]
+    				</div>
+		<div class="clear"></div>
+	</div>
+
+</div>
+<div id="OSC_Banner"><div class="wp998"><a href="http://www.oschina.net/" class="Logo" title="OSChina 开源中国">开源中国</a>
+<h1><a href="http://www.oschina.net/question">问答</a></h1>
+<dl>
+    <dt>当前位置：</dt>
+    <dd>
+                                    <a href="http://www.oschina.net/question">问答</a>&nbsp;»
+                <a href="http://www.oschina.net/question?catalog=2">技术分享</a>                                    »&nbsp;<a href="http://www.oschina.net/p/git">Git</a>
+                                        </dd>
+</dl>
+<form action="http://www.oschina.net/search" class="search">
+    <input type="hidden" name="scope" value="bbs">
+    <input id="channel_q" type="text" name="q" value="" placeholder="资讯、软件、分享、代码、博客" class="TXT">
+    <button type="submit" class="BTN">搜 索</button>
+</form>
+<div class="clear"></div></div></div>
+<div id="OSC_Screen">
+	<div id="OSC_Content" class="CenterDiv">
+<script type="text/javascript" src="./Git 常用命令详解（二）_files/scrolltopcontrol.js"></script>
+<script type="text/javascript">
+  	scrolltotop.offset(100,120);
+  	scrolltotop.init();
+	$(function(){
+		$('a.ShowUserOutline img.SmallPortrait').poshytip({
+			className: 'tip-yellowsimple',
+			alignTo: 'target',
+			alignX: 'right',
+			alignY: 'inner-top',
+			offsetX: 5,
+			offsetY: 0,
+			fade: false,
+			slide: false,
+			content: function(updateCallback) {
+				ajax_get("/action/ajax/get_user_outline?id="+$(this).attr('user'),false,function(html){
+					updateCallback(html);
+				});
+				return "<div style='height:100px;'>Loading...</div>";
+			}
+		});
+	});
+	function add_to_favorite(pid,concern_it){
+			alert("必须登录后才能收藏");
+		}
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        osc.show_tag_introduce_project();
+        osc.show_tag_introduce_other();
+    });
+</script>
+
+
+
+<div class="Question">
+    <div class="Body">
+        <div class="main">
+            <div class="Title">
+                <a class="jump_answer" href="http://www.oschina.net/question/565065_86025#tags_nav" title="跳到回复"></a>
+
+                <div class="QTitle">
+                                        <h1><a href="./Git 常用命令详解（二）_files/Git 常用命令详解（二）.html" hidefocus="true" name="top">Git 常用命令详解（二）</a></h1>
+
+                    <div class="array"></div>
+                </div>
+                <div class="clear"></div>
+            
+                <div class="clear"></div>
+            </div>
+                                
+
+            <div class="Content">
+                <p style="margin:0 0 10px 0;"><a style="color:#A00;font-weight:bold;" href="http://www.oschina.net/news/67248/oschina-crowdsourcing-cooperation-with-aliyun" target="_blank">阿里云携手开源中国众包平台发布百万悬赏项目 »</a>&nbsp;&nbsp;<img src="./Git 常用命令详解（二）_files/hot3.png" align="absmiddle"></p>
+                <div class="detail"><p> <strong><span style="color:#E53333;">开源中国 Git 代码托管平台 —— </span></strong><a target="_blank" href="http://git.oschina.net/" rel="nofollow"><strong><span style="color:#E53333;">http://git.oschina.net</span></strong></a> </p> 
+<p> Git 是一个很强大的分布式版本管理工具，它不但适用于管理大型开源软件的源代码（如：<a href="http://git.kernel.org/" target="_blank" rel="nofollow">linux kernel</a>），管理私人的文档和源代码也有很多优势（如：<a href="http://code.google.com/p/wsi-lgame-pro/" target="_blank" rel="nofollow">wsi-lgame-pro</a>） </p> 
+<p> Git 的更多介绍，请参考我的上一篇博客：<a href="http://blog.csdn.net/sunboy_2050/article/details/7527877" target="_blank" rel="nofollow">Git 版本管理工具</a> </p> 
+<p> <br> </p> 
+<p> <strong>一、 Git 命令初识</strong> </p> 
+<p style="font-family:Arial;"> 在正式介绍Git命令之前，先介绍一下Git 的基本命令和操作，对Git命令有一个总体的认识 </p> 
+<p style="font-family:Arial;"> 示例：从Git 版本库的初始化，通常有两种方式： </p> 
+<p style="font-family:Arial;"> 1）git clone：这是<span style="font-family:Arial;">一种</span>较为简单的初始化方式，当你已经有一个远程的Git版本库，只需要在本地克隆一份 </p> 
+<p style="font-family:Arial;"> 例如：git &nbsp;clone &nbsp;git://github.com/someone/some_project.git &nbsp;&nbsp;<span style="color:#ff0000;">some_project</span>&nbsp; </p> 
+<p style="font-family:Arial;"> 上面的命令就是将'git://github.com/someone/some_project.git'这个URL地址的远程版本库，完全克隆到本地some_project目录下 </p> 
+<p style="font-family:Arial;"> <br> </p> 
+<p style="font-family:Arial;"> 2）git init 和 git remote：这种方式稍微复杂一些，当你本地创建了一个工作目录，你可以进入这个目录，使用'git init'命令进行初始化；Git以后就会对该目录下的文件进行版本控制，这时候如果你需要将它放到远程服务器上，可以在远程服务器上创建一个目录，并把可访问的URL记录下来，此时你就可以利用'git remote add'命令来增加一个远程服务器端， </p> 
+<p style="font-family:Arial;"> 例如：git &nbsp;remote &nbsp;add &nbsp;<span style="color:#ff0000;">origin &nbsp;</span>git://github.com/someone/another_project.git </p> 
+<p style="font-family:Arial;"> 上面的命令就会增加URL地址为'git: //github.com/someone/another_project.git'，名称为origin的远程服务器，以后提交代码的时候只需要使用 origin别名即可 </p> 
+<br> 
+<p> <br> </p> 
+<strong>二、 Git 常用命令<br> <br> 1) 远程仓库相关命令</strong> 
+<br> 
+<p> 检出仓库： &nbsp; &nbsp; &nbsp; &nbsp;$ git clone git://github.com/jquery/jquery.git </p> 
+<p> 查看远程仓库：$ git remote -v </p> 
+<p> 添加远程仓库：$ git remote add [name] [url] </p> 
+<p> 删除远程仓库：$ git remote rm [name] </p> 
+<p> 修改远程仓库：$ git remote set-url --push [name] [newUrl] </p> 
+<p> 拉取远程仓库：$ git pull [remoteName] [localBranchName] </p> 
+<p> 推送远程仓库：$ git push [remoteName] [localBranchName] </p> 
+<br> *如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下： 
+<br> 
+<p> $git push origin test:master &nbsp; &nbsp; &nbsp; &nbsp; // 提交本地test分支作为远程的master分支 </p> $git push origin test:test &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 提交本地test分支作为远程的test分支 
+<br> 
+<p> <br> </p> 
+<p> <br> </p> 
+<p> <strong>2）分支(branch)操作相关命令</strong> </p> 
+<p> 查看本地分支：$ git branch </p> 
+<p> 查看远程分支：$ git branch -r </p> 
+<p> 创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支 </p> 
+<p> 切换分支：$ git checkout [name] </p> 
+<p> 创建新分支并立即切换到新分支：$ git checkout -b [name] </p> 
+<p> 删除分支：$ git branch -d [name] ---- -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项 </p> 
+<p> 合并分支：$ git merge [name] ----将名称为[name]的分支与当前分支合并 </p> 
+<p> 创建远程分支(本地分支push到远程)：$ git push origin [name] </p> 
+<p> 删除远程分支：$ git push origin :heads/[name] 或 $ gitpush origin :[name]&nbsp; </p> 
+<br> *创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔) 
+<br> 
+<p> $git symbolic-ref HEAD refs/heads/[name] </p> 
+<p> $rm .git/index </p> $git clean -fdx 
+<br> 
+<p> <br> </p> 
+<p> <br> </p> 
+<p> <strong>3）版本(tag)操作相关命令</strong> </p> 
+<p> 查看版本：$ git tag </p> 
+<p> 创建版本：$ git tag [name] </p> 
+<p> 删除版本：$ git tag -d [name] </p> 
+<p> 查看远程版本：$ git tag -r </p> 
+<p> 创建远程版本(本地版本push到远程)：$ git push origin [name] </p> 
+<p> 删除远程版本：$ git push origin :refs/tags/[name] </p> 
+<p> 合并远程仓库的tag到本地：$ git pull origin --tags </p> 
+<p> 上传本地tag到远程仓库：$ git push origin --tags </p> 
+<p> 创建带注释的tag：$ git tag -a [name] -m 'yourMessage' </p> 
+<p> <br> </p> 
+<p> <br> </p> 
+<p> <strong>4) 子模块(submodule)相关操作命令</strong> </p> 
+<p> 添加子模块：$ git submodule add [url] [path] </p> 
+<p> 如：$git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs </p> 
+<p> <br> </p> 
+<p> 初始化子模块：$ git submodule init &nbsp;----只在首次检出仓库时运行一次就行 </p> 
+<p> 更新子模块：$ git submodule update ----每次更新或切换分支后都需要运行一下 </p> 
+<br> 
+<p> 删除子模块：（分4步走哦） </p> 
+<p> 1) $ git rm --cached [path] </p> 
+<p> 2) 编辑“.gitmodules”文件，将子模块的相关配置节点删除掉 </p> 
+<p> 3) 编辑“ .git/config”文件，将子模块的相关配置节点删除掉 </p> 
+<p> 4) 手动删除子模块残留的目录 </p> 
+<p> <br> </p> 
+<p> <br> </p> 
+<p> <strong>5）忽略一些文件、文件夹不提交</strong> </p> 
+<p> 在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如 </p> 
+<p> target </p> 
+<p> bin </p> 
+<p> *.db </p> 
+<p> <br> </p> 
+<p> <br> </p> 
+<p> <strong>三、&nbsp;Git 命令详解</strong> </p> 
+<p style="font-family:Arial;"> 现在我们有了本地和远程的版本库，让我们来试着用用Git的基本命令： </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git pull：</span></strong>从其他的版本库（既可以是远程的也可以是本地的）将代码更新到本地，例如：'<span style="color:#5500FF;">git pull origin master</span>'就是将origin这个版本库的代码更新到本地的master主枝，该功能类似于SVN的<strong><span style="color:#5500FF;">update</span></strong> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git add：</span></strong>是将当前更改或者新增的文件加入到Git的索引中，加入到Git的索引中就表示记入了版本历史中，这也是提交之前所需要执行的一步，例如'git add app/model/user.rb'就会增加app/model/user.rb文件到Git的索引中，该功能类似于SVN的<strong><span style="color:#5500FF;">add</span></strong> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git rm：</span></strong>从当前的工作空间中和索引中删除文件，例如'<span style="color:#5500FF;">git rm app/model/user.rb</span>'，该功能类似于SVN的<strong><span style="color:#5500FF;">rm、del</span></strong> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git commit：</span></strong>提交当前工作空间的修改内容，类似于SVN的commit命令，例如'<span style="color:#5500FF;">git commit -m story #3, add user model</span>'，提交的时候必须用-m来输入一条提交信息，该功能类似于SVN的<strong><span style="color:#5500FF;">commit</span></strong> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git push：</span></strong>将本地commit的代码更新到远程版本库中，例如'<span style="color:#5500FF;">git push origin</span>'就会将本地的代码更新到名为orgin的远程版本库中 </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git log：</span></strong>查看历史日志，该功能类似于SVN的<strong><span style="color:#5500FF;">log</span></strong> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git revert：</span></strong>还原一个版本的修改，必须提供一个具体的Git版本号，例如'<span style="color:#5500FF;">git revert bbaf6fb5060b4875b18ff9ff637ce118256d6f20</span>'，Git的版本号都是生成的一个哈希值 </p> 
+<p style="color:#686E55;font-family:Arial;"> &nbsp; </p> 
+<p style="color:#686E55;font-family:Arial;"> <span style="color:#AA00FF;">上面的命令几乎都是每个版本控制工具所公有的，下面就开始尝试一下Git独有的一些命令：</span> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git branch：</span></strong>对分支的增、删、查等操作，例如'<span style="color:#5500FF;">git branch new_branch</span>'会从当前的工作版本创建一个叫做new_branch的新分支，'git branch -D new_branch'就会强制删除叫做new_branch的分支，'git branch'就会列出本地所有的分支 </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git checkout：</span></strong>Git的checkout有两个作用，其一是在不同的branch之间进行切换，例如'<span style="color:#5500FF;">git checkout new_branch</span>'就会切换到new_branch的分支上去；另一个功能是还原代码的作用，例如'<span style="color:#5500FF;">git checkout app/model/user.rb</span>'就会将user.rb文件从上一个已提交的版本中更新回来，未提交的内容全部会回滚<strong></strong> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git rebase：</span></strong>用下面两幅图解释会比较清楚一些，rebase命令执行后，实际上是将分支点从C移到了G，这样分支也就具有了从C到G的功能 </p> 
+<p style="color:#686E55;font-family:Arial;"> &nbsp; </p> 
+<p style="color:#686E55;font-family:Arial;"> <a href="./Git 常用命令详解（二）_files/06111738_OSuY.png" target="_blank"><img src="./Git 常用命令详解（二）_files/06111738_OSuY.png" alt="" style="cursor: pointer;"></a><br> <br> &nbsp; </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git reset：</span></strong>将当前的工作目录完全回滚到指定的版本号，假设如下图，我们有A-G五次提交的版本，其中C的版本号是 bbaf6fb5060b4875b18ff9ff637ce118256d6f20，我们执行了'<span style="color:#5500FF;">git reset&nbsp;</span><span style="color:#5500FF;">bbaf6fb5060b4875b18ff9ff637ce118256d6f20</span>'那么结果就只剩下了A-C三个提交的版本 </p> 
+<p style="color:#686E55;font-family:Arial;"> &nbsp; </p> 
+<p style="color:#686E55;font-family:Arial;"> <a href="./Git 常用命令详解（二）_files/06111738_eug0.png" target="_blank"><img src="./Git 常用命令详解（二）_files/06111738_eug0.png" alt="" style="cursor: pointer;"></a> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;"><br> </span></strong> </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git stash：</span></strong>将当前未提交的工作存入Git工作栈中，时机成熟的时候再应用回来，这里暂时提一下这个命令的用法，后面在技巧篇会重点讲解 </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git config：</span></strong>利用这个命令可以新增、更改Git的各种设置，例如'<span style="color:#5500FF;">git config branch.master.remote origin</span>'就将master的远程版本库设置为别名叫做origin版本库，后面在技巧篇会利用这个命令个性化设置你的Git，为你打造独一无二的 Git </p> 
+<p style="color:#686E55;font-family:Arial;"> <strong><span style="color:#FF007F;">git tag：</span></strong>可以将某个具体的版本打上一个标签，这样你就不需要记忆复杂的版本号哈希值了，例如你可以使用'<span style="color:#5500FF;">git tag revert_version bbaf6fb5060b4875b18ff9ff637ce118256d6f20</span>'来标记这个被你还原的版本，那么以后你想查看该版本时，就可以使用 revert_version标签名，而不是哈希值了 </p> 
+<p style="color:#686E55;font-family:Arial;"> Git&nbsp;之所以能够提供方便的本地分支等特性，是与它的文件存储机制有关的。Git存储版本控制信息时使用它自己定义的一套文件系统存储机制，在代码根目录下有一个.git文件夹，会有如下这样的目录结构： </p> 
+<p style="color:#686E55;font-family:Arial;"> &nbsp; </p> 
+<p style="color:#686E55;font-family:Arial;"> <a href="./Git 常用命令详解（二）_files/06111739_Cqas.png" target="_blank"><img src="./Git 常用命令详解（二）_files/06111739_Cqas.png" alt="" style="cursor: pointer;"></a><br> &nbsp; </p> 
+<p style="font-family:Arial;"> 有几个比较重要的文件和目录需要解释一下：HEAD文件存放根节点的信息，其实目录结构就表示一个树型结构，Git采用这种树形结构来存储版本信息，那么HEAD就表示根；refs目录存储了你在当前版本控制目录下的各种不同引用（引用指的是你本地和远程所用到的各个树分支的信息），它有heads、remotes、stash、tags四个子目录，分别存储对不同的根、远程版本库、Git栈和标签的四种引用，你可以通过命令'git show-ref'更清晰地查看引用信息；logs目录根据不同的引用存储了日志信息。因此，Git只需要代码根目录下的这一个.git目录就可以记录完整的版本控制信息，而不是像SVN那样根目录和子目录下都有.svn目录。那么下面就来看一下Git与SVN的区别吧 </p> 
+<p style="color:#686E55;font-family:Arial;"> &nbsp; </p> 
+<p style="color:#686E55;font-family:Arial;"> <br> </p> 
+<p style="color:#686E55;font-family:Arial;"> <br> </p> 
+<p style="font-family:Arial;"> <strong>四、 Git 与SVN 比较</strong> </p> 
+<p style="font-family:Arial;"> <span style="color:#686E55;"><strong><span style="color:#5500FF;">SVN</span></strong></span>（Subversion）是当前使用最多的版本控制工具。与它相比较，<span style="color:#686E55;"><strong><span style="color:#5500FF;">Git&nbsp;</span></strong></span>最大的优势在于两点：<span style="color:#FF0000;">易于本地增加分支和分布式的特性</span><span style="color:#686e55;">。</span> </p> 
+<p style="font-family:Arial;"> 下面两幅图可以形象的展示Git与SVN的不同之处： </p> 
+<p style="color:#686E55;font-family:Arial;"> &nbsp; </p> 
+<p style="color:#686E55;font-family:Arial;"> <a href="./Git 常用命令详解（二）_files/06111739_b04y.png" target="_blank"><img src="./Git 常用命令详解（二）_files/06111739_b04y.png" alt="" style="cursor: pointer;"></a> </p> 
+<p style="color:#686E55;font-family:Arial;"> ------------ </p> 
+<p style="color:#686E55;font-family:Arial;"> <a href="./Git 常用命令详解（二）_files/06111739_c2d0.png" target="_blank"><img src="./Git 常用命令详解（二）_files/06111739_c2d0.png" alt="" style="cursor: pointer;"></a> </p> 
+<p style="color:#686E55;font-family:Arial;"> &nbsp; </p> 
+<p style="font-family:Arial;"> 1）本地增加分支 </p> 
+<p style="font-family:Arial;"> 图中Git本地和服务器端结构都很灵活，所有版本都存储在一个目录中，你只需要进行分支的切换即可达到在某个分支工作的效果 </p> 
+<p style="font-family:Arial;"> 而SVN则完全不同，如果你需要在本地试验一些自己的代码，只能本地维护多个不同的拷贝，每个拷贝对应一个SVN服务器地址 </p> 
+<p style="font-family:Arial;"> <br> </p> 
+<p style="font-family:Arial;"> 举一个实际的例子： </p> 
+<p style="font-family:Arial;"> 使用SVN作为版本控制工具，当正在试图增强一个模块，工作做到一半，由于会改变原模块的行为导致代码服务器上许多测试的失败，所以并没有提交代码。 </p> 
+<p style="font-family:Arial;"> 这时候假如现在有一个很紧急的Bug需要处理， 必须在两个小时内完成。我只好将本地的所有修改<span style="font-family:Verdana, Arial, Helvetica, sans-serif;">diff</span>，并输出成为一个<span style="font-family:Verdana, Arial, Helvetica, sans-serif;">patch</span>文件，然后回滚有关当前任务的所有代码，再开始修改Bug的任务，等到修改好后，在将patch应用回来。前前后后要完成多个繁琐的步骤，这还不计中间代码发生冲突所要进行的工作量。 </p> 
+<p style="font-family:Arial;"> 可是如果使用Git， 我们只需要开一个分支或者转回到主分支上，就可以随时开始Bug修改的任务，完成之后，只要切换到原来的分支就可以优雅的继续以前的任务。只要你愿意，每一个新的任务都可以开一个分支，完成后，再将它合并到主分支上，轻松而优雅。 </p> 
+<p style="font-family:Arial;"> <br> </p> 
+<p style="font-family:Arial;"> 2）分布式提交 </p> 
+<p style="font-family:Arial;"> Git&nbsp;可以本地提交代码，所以在上面的图中，Git有利于将一个大任务分解，进行本地的多次提交 </p> 
+<p style="font-family:Arial;"> 而SVN只能在本地进行大量的一次性更改，导致将来合并到主干上造成巨大的风险 </p> 
+<p style="font-family:Arial;"> <br> </p> 
+<p style="font-family:Arial;"> 3）日志查看 </p> 
+<p style="font-family:Arial;"> Git 的代码日志是在本地的，可以随时查看 </p> 
+<p style="font-family:Arial;"> SVN的日志在服务器上的，每次查看日志需要先从服务器上下载下来 </p> 
+<p style="font-family:Arial;"> 例如：代码服务器在美国，当每次查看几年前所做的工作时，日志下载可能需要十分钟，这不能不说是一个痛苦。但是如果迁移到Git上，利用Git日志在本地的特性，查看某个具体任务的所有代码历史，每次只需要几秒钟，大大方便了工作，提高了效率。 </p> 
+<p style="font-family:Arial;"> 当然分布式并不是说用了Git就不需要一个代码中心服务器，如果你工作在一个团队里，还是需要一个服务器来保存所有的代码的。 </p> 
+<p style="font-family:Arial;"> &nbsp; </p> 
+<p style="font-family:Arial;"> <br> </p> 
+<p style="font-family:Arial;"> <strong>五、 总结</strong> </p> 
+<p style="font-family:Arial;"> 上面简单介绍了Git 的基本概念、一些常用命令和原理，大家也可以尝试动手，在Google Code 或 GitHub 上创建一个自己的开源项目 </p> 
+<p style="font-family:Arial;"> <br> </p> 
+<p style="font-family:Arial;"> Git 创建与使用示例： </p> 
+<p style="font-family:Arial;"> 在Google Code 上，我创建了Git 项目：<a href="http://code.google.com/p/linux-kernel-source/source/checkout" target="_blank" rel="nofollow">linux-kernel-source</a> </p> 
+<p style="font-family:Arial;"> 在GitHub上，我引用的Git 项目：<a href="https://github.com/facebook/hiphop-php" target="_blank" rel="nofollow">hiphop-php</a> </p> 
+<p style="font-family:Arial;"> 在osChina上，我分享的项目：<a href="http://www.oschina.net/code/explore/gcc-4.5.2" target="_blank" rel="nofollow">gcc-4.5.2</a> </p> 
+<br> 
+<p> <br> </p> 
+<p> <strong><span style="color:#ff0000;">参考推荐：</span></strong> </p> 
+<p> <a href="http://hi.baidu.com/sunboy_2050/blog/item/b7ec1432be8d9c82a8018eff.html" target="_blank" rel="nofollow">Git 命令参数及用法详解</a> </p> 
+<p> <a href="http://blog.csdn.net/sunboy_2050/article/details/7527877" target="_blank" rel="nofollow">Git 版本管理工具</a> </p> 
+<p> <a href="http://blog.csdn.net/sunboy_2050/article/details/6187464" target="_blank" rel="nofollow">SVN常用命令</a> </p> 
+<p> <br> </p> 
+<br> 原文链接： 
+<a href="http://blog.csdn.net/sunboy_2050/article/details/7529022" target="_blank" rel="nofollow">http://blog.csdn.net/sunboy_2050/article/details/7529022</a>                    <div class="clear"></div><div class="EditLogs">
+	<span class="question_resupply_list">
+		</span>
+</div></div>
+                                <div class="Asker special">
+                    <div class="info" title="长平狐">
+					<span class="ainfo">
+						<a href="http://my.oschina.net/changpinghu" class="ShowUserOutline" target="_blank" title="长平狐"><img src="./Git 常用命令详解（二）_files/565065_50.jpg" align="absmiddle" alt="长平狐" title="长平狐" class="SmallPortrait" user="565065"></a>
+					</span>
+					<span class="pinfo">
+		    			<a href="http://my.oschina.net/changpinghu" class="Asker-Name" target="_blank">长平狐</a><br>
+		    			<span class="pub_time">发帖于&nbsp;3年前</span><br>
+		    			<span><a href="http://www.oschina.net/question/565065_86025#answers" class="answer_count">7</a>回/55758阅</span>
+					</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="tags_toolbars">
+                    <div class="Tags" id="tags_nav">
+                        <strong>标签：</strong>
+                                                                            <a href="http://www.oschina.net/question/tag/git" class="tag project image" data-id="414" title="分布式版本控制系统 Git"><img src="./Git 常用命令详解（二）_files/git_b4fMa.png" height="18" class="prj_logo_18">Git</a>                                                                     </div>
+                                            <div class="SameQuestions">
+			<span class="q_toolbar">
+				<ul>
+                                        <li> <a href="javascript:report('http://www.oschina.net/question/565065_86025',86025,2)">举报&nbsp;</a></li>
+                    <li id="Share">
+                        <a class="Ask_Share_Tencent" title="分享到腾讯微博" href="javascript:(function(){window.open('http://v.t.qq.com/share/share.php?url='+encodeURIComponent(document.location)+'&appkey=96f54f97c4de46e393c4835a266207f4&site=&title='+encodeURIComponent(document.title)+encodeURIComponent(': 开源中国 Git 代码托管平台 —— http://git.oschina.net Git 是一个很强大的分布式版本管理工具，它不但适用于管理大型开源软件的源代码（如：linux kernel），管理私人...'),'', 'width=450, height=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no');}())"></a>
+                        <a class="Ask_Share_Sina" title="分享到新浪微博" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=858381728',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','','Git 常用命令详解（二）: 开源中国 Git 代码托管平台 —— http://git.oschina.net Git 是一个很强大的分布式版本管理工具，它不但适用于管理大型开源软件的源代码（如：linux kernel），管理私人...','','utf-8'));"></a>
+                        |<a href="javascript:function(0);">&nbsp;分享到</a>
+                    </li>
+                </ul>
+			</span>
+
+                            <div class="clear"></div>
+                        </div>
+                                    </div>
+            </div>
+            <div class="Vote" id="Vote">
+                                                <a id="vote_up" class="vote-up-off" href="http://www.oschina.net/question/565065_86025#" title="顶：这问题很有用或者提问清晰明了"></a>
+                                <span class="q_vote_num">2</span>
+                                    <a id="vote_down" class="vote-down-off" href="http://www.oschina.net/question/565065_86025#" title="踩：这问题不知道在问什么，或者没什么用"></a>
+                                <span class="store">
+    		<a title="收藏此话题" class="Tool-Store-Off" id="favor_trigger" href="javascript:;">收藏(37)</a>
+    		</span>
+            </div>
+        </div>
+        <style type="text/css">
+            #TagsSwitcher { color : #A00; }
+
+            #RecTags, #MyTags { margin : 5px 0; }
+
+            #RecTags a.tag { line-height : 24px; }
+
+            #favor_form p:first-child { margin : 5px 0; }
+
+            #favor_form { width : 200px; }
+
+            #favor_form p { color : #666; }
+
+            #favor_form form { width : 200px; }
+
+            #favor_form form ._favor_input { display : block; margin : 2px 0; width : 199px; }
+
+            #favor_form form ._favor_button { float : left; padding : 2px 5px; }
+
+            .favor_ok { text-align : center; font-size : 10.5pt; width : 199px; height : 60px; margin-top : 10px; }
+
+            #TagsSwitcher { cursor : pointer; float : right; margin-top : 10px; }
+
+            #MyTags { display : none; width : 199px; }
+
+            #MyTags a.tag { float : left; background-color : #E0EAF1; border-bottom : 1px solid #3E6D8E; border-right : 1px solid #7F9FB6; color : #3E6D8E; font-size : 8pt; line-height : 16px; margin : 2px 2px 2px 0; padding : 2px 4px; text-decoration : none; white-space : nowrap; }
+
+            #MyTags a.tag:hover { background-color : #3E6D8E; color : #FFF; }
+
+            .osc_promotion { position : relative; display : inline-block; padding : 10px; margin : 10px 0; border : 1px solid #ccc; }
+
+            .osc_promotion .c { position : absolute; right : -1px; top : -1px; }
+
+            .ask_toolbar { float : right; list-style : none; font-size : 12px; color : #333; height : 28px; _padding-top : 5px; overflow : hidden; margin : 20px 0 10px 0; }
+
+            .ask_toolbar div { float : left; margin-left : 5px; background : url("/img/ask-icon.gif") no-repeat; padding : 6px 0 6px 15px; padding-left : 15px; height : 16px; }
+
+            .ask_toolbar a { height : 16px; color : #333; text-decoration : none; display : inline-block; zoom : 1; vertical-align : middle; }
+
+            .ask_share { width : 89px; vertical-align : bottom; line-height : 15px; _line-height : 14px; }
+
+            .ask_share a { background : url("/img/ask-icon.gif"); width : 16px; }
+
+            a.ask_share_sina { background : url("/img/ask-icon.gif") 0 -40px no-repeat; margin-left : 5px; }
+
+            a.ask_share_tencent { background-position : 0 -70px; margin-left : 5px; }
+
+            .ask_toolbar em { height : 28px; line-height : 28px; width : 14px; display : inline-block; float : left; background : url("/img/ask-icon.gif") top right; }
+
+            .ask_collect a, .ask_report a, .ask_vote a, .ask_collected a { padding-left : 20px; line-height : 15px; }
+
+            .ask_collect a { background : url("/img/ask-icon.gif") 0 -131px no-repeat; }
+
+            .ask_collected a { background : url("/img/ask-icon.gif") 0 -100px no-repeat; }
+
+            div.ask_collect_count { background : url("/img/ask-icon.gif") 0 -309px no-repeat; font-weight : bold; font-size : 14px; margin-left : 0; height : 16px; line-height : 16px; }
+
+            .ask_report a { background : url("/img/ask-icon.gif") 0 -160px no-repeat; }
+
+            em.ask_collect_count_r { background-position : 59px -309px; }
+
+            .ask_vote a { background : url("/img/ask-icon.gif"); }
+                        a.ask_vote_up { background-position : 3px -190px; }
+
+            a.ask_vote_down { background-position : 0 -280px; }
+
+            a.ask_vote_uped { background-position : 3px -190px; }
+                        a.ask_vote_downed { background-position : 0 -280px; }
+
+            .ask_vote span { display : inline-block; margin : 0 10px; font-weight : bold; font-size : 14px; vertical-align : middle; margin-bottom : 2px; line-height : 16px; }
+        </style>
+        <div class="clear"></div>
+    
+    	        <div class="clear"></div>
+                        <div class="QuestionReplies">
+            <h2>
+				<span class="sort">
+					<a href="http://www.oschina.net/question/565065_86025#answers" class="current">按默认排序</a>&nbsp;
+					<a href="http://www.oschina.net/question/565065_86025?sort=time#answers">显示最新评论</a>&nbsp;&nbsp;
+				</span>
+                <a name="answers"></a>共有<em class="answer_count">7</em>个评论
+                <a href="http://www.oschina.net/question/565065_86025?sort=time#answers" class="last_reply">(最后回答: 2个月前
+                    )</a>            </h2>
+                        <ul class="list"><span class="hr unvisible"></span><div class="Vote" id="vote_653718">
+        <a href="javascript:vote_answer(653718,true,true)" id="a_post_voteup_653718" class=" vote-up-off " title=" 投支持票 "></a>
+    <span class="a_vote_num" id="a_vote_num_653718">0</span>
+    <a href="javascript:vote_answer(653718,false,true)" id="a_post_votedown_653718" class=" vote-down-off " title=" 投反对票 "></a>
+                </div>
+<li class="Answer " id="answer_653718">
+    <div class="user">
+        <span class="user_img"><a href="http://my.oschina.net/duguying" class="ShowUserOutline" name="AnchorAnswer653718" target="_blank"><img src="./Git 常用命令详解（二）_files/221249_50.png" align="absmiddle" alt="独孤影" title="独孤影" class="SmallPortrait" user="221249"></a></span>
+		<span class="user_info">
+			<a href="http://my.oschina.net/duguying" title="独孤影" target="_blank">独孤影</a>
+			<span class="reply-time">2年前</span>
+		</span>
+
+        <div class="clear"></div>
+    </div>
+    <div class="body">
+                                            <div class="clear"></div>
+        <div class="detail">mark</div>
+    </div>
+    <div class="clear"></div>
+    <div class="replies" id="PostReplies_653718"></div>
+
+    <div class="votes">
+                <span class="a_toolbar">
+		<a href="javascript:reply_to_post(653718, 0)">评论(0)</a>|
+            <a href="http://www.oschina.net/question/answer?question=86025&answer=653718">引用此评论</a>|                                        <a href="javascript:report('http://www.oschina.net/question/565065_86025#AnchorAnswer653718',653718,17)">举报</a>
+            
+            (2013-12-15 15:07)
+		</span>
+    </div>
+</li>
+<span class="hr"></span>
+<script>
+                $('li.Answer').bind('mouseenter', function () {
+            var anwserId = $(this).attr('id');
+        }).bind('mouseleave', function () {
+            var anwserId = $(this).attr('id');
+        });
+        $('.Vote').bind('mouseenter', function () {
+            $(this).find('a.accept-off').show();
+            $(this).find('a.accept-on').show();
+            $(this).next('li.Answer').find('.hover-show').show();
+        }).bind('mouseleave', function () {
+            $(this).find('a.accept-off').hide();
+            $(this).next('li.Answer').find('.hover-show').hide();
+        });
+        </script><div class="Vote" id="vote_807662">
+        <a href="javascript:vote_answer(807662,true,true)" id="a_post_voteup_807662" class=" vote-up-off " title=" 投支持票 "></a>
+    <span class="a_vote_num" id="a_vote_num_807662">0</span>
+    <a href="javascript:vote_answer(807662,false,true)" id="a_post_votedown_807662" class=" vote-down-off " title=" 投反对票 "></a>
+                </div>
+<li class="Answer " id="answer_807662">
+    <div class="user">
+        <span class="user_img"><a href="http://my.oschina.net/suyuwen" class="ShowUserOutline" name="AnchorAnswer807662" target="_blank"><img src="./Git 常用命令详解（二）_files/928440_50.jpg" align="absmiddle" alt="suyuwen1" title="suyuwen1" class="SmallPortrait" user="928440"></a></span>
+		<span class="user_info">
+			<a href="http://my.oschina.net/suyuwen" title="suyuwen1" target="_blank">suyuwen1</a>
+			<span class="reply-time">1年前</span>
+		</span>
+
+        <div class="clear"></div>
+    </div>
+    <div class="body">
+                                            <div class="clear"></div>
+        <div class="detail"><span style="color:#464646;font-family:verdana, &#39;ms song&#39;, Arial, Helvetica, sans-serif;font-size:12px;line-height:18px;background-color:#FAF7EF;">和大家分享一篇不错的文章</span> 
+<br> 
+<span style="color:#464646;font-family:verdana, &#39;ms song&#39;, Arial, Helvetica, sans-serif;font-size:12px;line-height:18px;background-color:#FAF7EF;">Git版本控制软件结合GitHub从入门到精通常用命令学习手册</span> 
+<br> 
+<a href="http://www.ihref.com/read-16369.html" target="_blank" rel="nofollow">http://www.ihref.com/read-16369.html</a></div>
+    </div>
+    <div class="clear"></div>
+    <div class="replies" id="PostReplies_807662"><div class="clear"></div>
+<strong>--- 共有 1 条评论 --- </strong>
+<ul>
+		<li id="PostReply_817613">
+				<a href="http://my.oschina.net/awokE" class="p" name="AnchorAnswer817613">Will_awokE</a>
+		<span class="b">
+		<span class="c">哪里都有你.....为了推荐你的文章够拼的...</span>
+		<span class="t">
+				(1年前)&nbsp;&nbsp;
+				<span class="opts"><a href="javascript:reply_to_post(807662,1450171)">回复</a></span>
+		</span>
+		</span>
+		<div class="clear"></div>
+	</li>
+	</ul>	
+<div class="PagerLinks">
+</div>
+</div>
+
+    <div class="votes">
+                <span class="a_toolbar">
+		<a href="javascript:reply_to_post(807662, 0)">评论(1)</a>|
+            <a href="http://www.oschina.net/question/answer?question=86025&answer=807662">引用此评论</a>|                                        <a href="javascript:report('http://www.oschina.net/question/565065_86025#AnchorAnswer807662',807662,17)">举报</a>
+            
+            (2014-08-22 22:59)
+		</span>
+    </div>
+</li>
+<span class="hr"></span>
+<script>
+                $('li.Answer').bind('mouseenter', function () {
+            var anwserId = $(this).attr('id');
+        }).bind('mouseleave', function () {
+            var anwserId = $(this).attr('id');
+        });
+        $('.Vote').bind('mouseenter', function () {
+            $(this).find('a.accept-off').show();
+            $(this).find('a.accept-on').show();
+            $(this).next('li.Answer').find('.hover-show').show();
+        }).bind('mouseleave', function () {
+            $(this).find('a.accept-off').hide();
+            $(this).next('li.Answer').find('.hover-show').hide();
+        });
+        </script><div class="Vote" id="vote_872496">
+        <a href="javascript:vote_answer(872496,true,true)" id="a_post_voteup_872496" class=" vote-up-off " title=" 投支持票 "></a>
+    <span class="a_vote_num" id="a_vote_num_872496">0</span>
+    <a href="javascript:vote_answer(872496,false,true)" id="a_post_votedown_872496" class=" vote-down-off " title=" 投反对票 "></a>
+                </div>
+<li class="Answer " id="answer_872496">
+    <div class="user">
+        <span class="user_img"><a href="http://my.oschina.net/lampdraem" class="ShowUserOutline" name="AnchorAnswer872496" target="_blank"><img src="./Git 常用命令详解（二）_files/1054064_50.png" align="absmiddle" alt="燕玉苗" title="燕玉苗" class="SmallPortrait" user="1054064"></a></span>
+		<span class="user_info">
+			<a href="http://my.oschina.net/lampdraem" title="燕玉苗" target="_blank">燕玉苗</a>
+			<span class="reply-time">11个月前</span>
+		</span>
+
+        <div class="clear"></div>
+    </div>
+    <div class="body">
+                                            <div class="clear"></div>
+        <div class="detail">nice</div>
+    </div>
+    <div class="clear"></div>
+    <div class="replies" id="PostReplies_872496"></div>
+
+    <div class="votes">
+                <span class="a_toolbar">
+		<a href="javascript:reply_to_post(872496, 0)">评论(0)</a>|
+            <a href="http://www.oschina.net/question/answer?question=86025&answer=872496">引用此评论</a>|                                        <a href="javascript:report('http://www.oschina.net/question/565065_86025#AnchorAnswer872496',872496,17)">举报</a>
+            
+            (2014-12-12 10:49)
+		</span>
+    </div>
+</li>
+<span class="hr"></span>
+<script>
+                $('li.Answer').bind('mouseenter', function () {
+            var anwserId = $(this).attr('id');
+        }).bind('mouseleave', function () {
+            var anwserId = $(this).attr('id');
+        });
+        $('.Vote').bind('mouseenter', function () {
+            $(this).find('a.accept-off').show();
+            $(this).find('a.accept-on').show();
+            $(this).next('li.Answer').find('.hover-show').show();
+        }).bind('mouseleave', function () {
+            $(this).find('a.accept-off').hide();
+            $(this).next('li.Answer').find('.hover-show').hide();
+        });
+        </script><div class="Vote" id="vote_878635">
+        <a href="javascript:vote_answer(878635,true,true)" id="a_post_voteup_878635" class=" vote-up-off " title=" 投支持票 "></a>
+    <span class="a_vote_num" id="a_vote_num_878635">0</span>
+    <a href="javascript:vote_answer(878635,false,true)" id="a_post_votedown_878635" class=" vote-down-off " title=" 投反对票 "></a>
+                </div>
+<li class="Answer " id="answer_878635">
+    <div class="user">
+        <span class="user_img"><a href="http://my.oschina.net/airson79" class="ShowUserOutline" name="AnchorAnswer878635" target="_blank"><img src="./Git 常用命令详解（二）_files/portrait.gif" align="absmiddle" alt="airson79" title="airson79" class="SmallPortrait" user="100183"></a></span>
+		<span class="user_info">
+			<a href="http://my.oschina.net/airson79" title="airson79" target="_blank">airson79</a>
+			<span class="reply-time">10个月前</span>
+		</span>
+
+        <div class="clear"></div>
+    </div>
+    <div class="body">
+                                            <div class="clear"></div>
+        <div class="detail">mark</div>
+    </div>
+    <div class="clear"></div>
+    <div class="replies" id="PostReplies_878635"></div>
+
+    <div class="votes">
+                <span class="a_toolbar">
+		<a href="javascript:reply_to_post(878635, 0)">评论(0)</a>|
+            <a href="http://www.oschina.net/question/answer?question=86025&answer=878635">引用此评论</a>|                                        <a href="javascript:report('http://www.oschina.net/question/565065_86025#AnchorAnswer878635',878635,17)">举报</a>
+            
+            (2014-12-23 16:41)
+		</span>
+    </div>
+</li>
+<span class="hr"></span>
+<script>
+                $('li.Answer').bind('mouseenter', function () {
+            var anwserId = $(this).attr('id');
+        }).bind('mouseleave', function () {
+            var anwserId = $(this).attr('id');
+        });
+        $('.Vote').bind('mouseenter', function () {
+            $(this).find('a.accept-off').show();
+            $(this).find('a.accept-on').show();
+            $(this).next('li.Answer').find('.hover-show').show();
+        }).bind('mouseleave', function () {
+            $(this).find('a.accept-off').hide();
+            $(this).next('li.Answer').find('.hover-show').hide();
+        });
+        </script><div class="Vote" id="vote_929284">
+        <a href="javascript:vote_answer(929284,true,true)" id="a_post_voteup_929284" class=" vote-up-off " title=" 投支持票 "></a>
+    <span class="a_vote_num" id="a_vote_num_929284">0</span>
+    <a href="javascript:vote_answer(929284,false,true)" id="a_post_votedown_929284" class=" vote-down-off " title=" 投反对票 "></a>
+                </div>
+<li class="Answer " id="answer_929284">
+    <div class="user">
+        <span class="user_img"><a href="http://my.oschina.net/rock117" class="ShowUserOutline" name="AnchorAnswer929284" target="_blank"><img src="./Git 常用命令详解（二）_files/1762684_50.jpg" align="absmiddle" alt="疯狂的骑士" title="疯狂的骑士" class="SmallPortrait" user="1762684"></a></span>
+		<span class="user_info">
+			<a href="http://my.oschina.net/rock117" title="疯狂的骑士" target="_blank">疯狂的骑士</a>
+			<span class="reply-time">7个月前</span>
+		</span>
+
+        <div class="clear"></div>
+    </div>
+    <div class="body">
+                                            <div class="clear"></div>
+        <div class="detail">好文章 <br></div>
+    </div>
+    <div class="clear"></div>
+    <div class="replies" id="PostReplies_929284"></div>
+
+    <div class="votes">
+                <span class="a_toolbar">
+		<a href="javascript:reply_to_post(929284, 0)">评论(0)</a>|
+            <a href="http://www.oschina.net/question/answer?question=86025&answer=929284">引用此评论</a>|                                        <a href="javascript:report('http://www.oschina.net/question/565065_86025#AnchorAnswer929284',929284,17)">举报</a>
+            
+            (2015-04-07 10:16)
+		</span>
+    </div>
+</li>
+<span class="hr"></span>
+<script>
+                $('li.Answer').bind('mouseenter', function () {
+            var anwserId = $(this).attr('id');
+        }).bind('mouseleave', function () {
+            var anwserId = $(this).attr('id');
+        });
+        $('.Vote').bind('mouseenter', function () {
+            $(this).find('a.accept-off').show();
+            $(this).find('a.accept-on').show();
+            $(this).next('li.Answer').find('.hover-show').show();
+        }).bind('mouseleave', function () {
+            $(this).find('a.accept-off').hide();
+            $(this).next('li.Answer').find('.hover-show').hide();
+        });
+        </script><div class="Vote" id="vote_967570">
+        <a href="javascript:vote_answer(967570,true,true)" id="a_post_voteup_967570" class=" vote-up-off " title=" 投支持票 "></a>
+    <span class="a_vote_num" id="a_vote_num_967570">0</span>
+    <a href="javascript:vote_answer(967570,false,true)" id="a_post_votedown_967570" class=" vote-down-off " title=" 投反对票 "></a>
+                </div>
+<li class="Answer " id="answer_967570">
+    <div class="user">
+        <span class="user_img"><a href="http://my.oschina.net/u/852477" class="ShowUserOutline" name="AnchorAnswer967570" target="_blank"><img src="./Git 常用命令详解（二）_files/852477_50.jpg" align="absmiddle" alt="kxykxy" title="kxykxy" class="SmallPortrait" user="852477"></a></span>
+		<span class="user_info">
+			<a href="http://my.oschina.net/u/852477" title="kxykxy" target="_blank">kxykxy</a>
+			<span class="reply-time">5个月前</span>
+		</span>
+
+        <div class="clear"></div>
+    </div>
+    <div class="body">
+                                            <div class="clear"></div>
+        <div class="detail">mark nice</div>
+    </div>
+    <div class="clear"></div>
+    <div class="replies" id="PostReplies_967570"></div>
+
+    <div class="votes">
+                <span class="a_toolbar">
+		<a href="javascript:reply_to_post(967570, 0)">评论(0)</a>|
+            <a href="http://www.oschina.net/question/answer?question=86025&answer=967570">引用此评论</a>|                                        <a href="javascript:report('http://www.oschina.net/question/565065_86025#AnchorAnswer967570',967570,17)">举报</a>
+            
+            (2015-06-16 17:06)
+		</span>
+    </div>
+</li>
+<span class="hr"></span>
+<script>
+                $('li.Answer').bind('mouseenter', function () {
+            var anwserId = $(this).attr('id');
+        }).bind('mouseleave', function () {
+            var anwserId = $(this).attr('id');
+        });
+        $('.Vote').bind('mouseenter', function () {
+            $(this).find('a.accept-off').show();
+            $(this).find('a.accept-on').show();
+            $(this).next('li.Answer').find('.hover-show').show();
+        }).bind('mouseleave', function () {
+            $(this).find('a.accept-off').hide();
+            $(this).next('li.Answer').find('.hover-show').hide();
+        });
+        </script><div class="Vote" id="vote_1011773">
+        <a href="javascript:vote_answer(1011773,true,true)" id="a_post_voteup_1011773" class=" vote-up-off " title=" 投支持票 "></a>
+    <span class="a_vote_num" id="a_vote_num_1011773">0</span>
+    <a href="javascript:vote_answer(1011773,false,true)" id="a_post_votedown_1011773" class=" vote-down-off " title=" 投反对票 "></a>
+                </div>
+<li class="Answer " id="answer_1011773">
+    <div class="user">
+        <span class="user_img"><a href="http://my.oschina.net/moxun" class="ShowUserOutline" name="AnchorAnswer1011773" target="_blank"><img src="./Git 常用命令详解（二）_files/1413238_50.jpg" align="absmiddle" alt="陌寻" title="陌寻" class="SmallPortrait" user="1413238"></a></span>
+		<span class="user_info">
+			<a href="http://my.oschina.net/moxun" title="陌寻" target="_blank">陌寻</a>
+			<span class="reply-time">2个月前</span>
+		</span>
+
+        <div class="clear"></div>
+    </div>
+    <div class="body">
+                                            <div class="clear"></div>
+        <div class="detail">mark.</div>
+    </div>
+    <div class="clear"></div>
+    <div class="replies" id="PostReplies_1011773"></div>
+
+    <div class="votes">
+                <span class="a_toolbar">
+		<a href="javascript:reply_to_post(1011773, 0)">评论(0)</a>|
+            <a href="http://www.oschina.net/question/answer?question=86025&answer=1011773">引用此评论</a>|                                        <a href="javascript:report('http://www.oschina.net/question/565065_86025#AnchorAnswer1011773',1011773,17)">举报</a>
+            
+            (2015-09-13 20:47)
+		</span>
+    </div>
+</li>
+<span class="hr"></span>
+<script>
+                $('li.Answer').bind('mouseenter', function () {
+            var anwserId = $(this).attr('id');
+        }).bind('mouseleave', function () {
+            var anwserId = $(this).attr('id');
+        });
+        $('.Vote').bind('mouseenter', function () {
+            $(this).find('a.accept-off').show();
+            $(this).find('a.accept-on').show();
+            $(this).next('li.Answer').find('.hover-show').show();
+        }).bind('mouseleave', function () {
+            $(this).find('a.accept-off').hide();
+            $(this).next('li.Answer').find('.hover-show').hide();
+        });
+        </script>            </ul>
+                            </div>
+        <div class="recruitment recruitment-question">
+	<div class="recruit-heading">
+		<div class="title">
+			最新热门职位
+		</div>
+		<div class="more">
+			更多开发者职位上
+			<a href="http://job.oschina.net/" target="_blank" class="link">开源中国·招聘</a>
+		</div>
+	</div>
+	<div class="recruit-body">
+		<ul>
+									<li>
+				<div class="logo-img">
+					<a href="http://job.oschina.net/position/2872_1258521_17622" target="_blank">
+										<img src="./Git 常用命令详解（二）_files/22112046_11fd1258521.png">
+										</a>
+				</div>
+				<div class="info-list">
+					<div>
+						<a href="http://job.oschina.net/position/2872_1258521_17622" target="_blank">	Android开发工程师...
+</a>
+						<a href="http://job.oschina.net/company/1258521_2872" target="_blank">
+							<small>阔知网络
+</small>
+						</a>
+					</div>
+					<h5>
+						月薪：
+						<span class="font-red">8-10K</span>
+					</h5>
+				</div>
+			</li>
+												<li>
+				<div class="logo-img">
+					<a href="http://job.oschina.net/position/1838_1028597_17655" target="_blank">
+										<img src="./Git 常用命令详解（二）_files/23112356_yzdt1028597.jpeg">
+										</a>
+				</div>
+				<div class="info-list">
+					<div>
+						<a href="http://job.oschina.net/position/1838_1028597_17655" target="_blank">	PHP开发工程师
+</a>
+						<a href="http://job.oschina.net/company/1028597_1838" target="_blank">
+							<small>电商运营公司
+</small>
+						</a>
+					</div>
+					<h5>
+						月薪：
+						<span class="font-red">7-12K</span>
+					</h5>
+				</div>
+			</li>
+								</ul>
+	</div>
+	<div class="clear"></div>
+</div>
+<style>
+	/*招聘广告位--样式*/
+	.clear{
+		clear:both;
+		font-size:1px;
+		line-height: 0;
+	}
+	.recruitment{
+		background:#fff;
+		font-size: 14px;
+		color: #333;
+		padding-bottom: 10px;
+	}
+	.recruitment a{
+		text-decoration: none;
+		color: #333;
+	}
+	.recruitment a:hover{
+		text-decoration: none;
+		color: #459120;
+	}
+	.recruitment ul,.recruitment li{
+		list-style-type: none;
+		padding:0;
+		margin:0;
+	}
+	.recruitment h5{
+		font-weight: 400;
+		font-size: 12px;
+		color: #999;
+		margin:0;
+	}
+	.recruitment .recruit-heading{
+		height: 34px;
+		line-height: 34px;
+		border-bottom:1px solid #ddd;
+		margin-bottom: 10px;
+	}
+	.recruitment .recruit-heading .title{
+		float:left;
+	}
+	.recruitment .recruit-heading .more{
+		float:right;
+	}
+	.recruitment .recruit-heading .link{
+		color:#3AA904;
+		font-size: 12px;
+		font-weight: bold;
+	}
+	.recruitment .recruit-body{
+	}
+	.recruitment .recruit-body li{
+		outline: 0;
+		padding:10px 0;
+		width: 50%;
+		height: 50px;
+		margin:0;
+		float: left;
+	}
+	.recruitment .recruit-body li .logo-img{
+		float: left;
+		width: 44px;
+		height: 44px;
+		display: inline-block;
+		padding: 2px;
+		border:1px solid #ccc;
+	}
+	.recruitment .recruit-body li .logo-img img{
+		width: 44px;
+		height: 44px;
+	}
+	.recruitment .recruit-body li .logo-img span{
+		display: block;
+		font-weight: 700;
+		height: 44px;
+		line-height: 44px;
+		font-size: 20px;
+		text-align: center;
+		border-radius: 5px;
+	}
+	.recruitment .recruit-body li .info-list{
+		margin-left:60px;
+	}
+	.recruitment .recruit-body li .info-list div{
+		line-height: 30px;
+	}
+	.recruitment .recruit-body li .info-list div a{
+		margin-right:10px;
+	}
+	.recruitment .recruit-body li .info-list small{
+		color: #666;
+	}
+	.recruitment .font-red{
+		color: #EB6000 !important;
+	}
+	.recruitment-question{
+		border-bottom: 1px solid #ddd;
+	}
+	.recruitment-question .recruit-heading{
+		padding-top:10px;
+		margin:0 !important;
+		border: 0 !important;
+	}
+	.recruitment-question .recruit-heading .title{
+		font-size:16px;
+	}
+
+	.recruitment .recruit-heading .more{
+		font-size:12px;
+	}
+</style>
+        <div class="AnswerForm">
+                    <form id="form_answer" action="http://www.oschina.net/action/question/answer?question=86025" method="post">
+                <input type="hidden" name="user" value="">
+                <div class="ke-container ke-container-oschina" style="width: 650px;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-outline" data-name="strikethrough" title="删除线" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-strikethrough" unselectable="on"></span></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span><span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-outline" data-name="unlink" title="取消超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-unlink" unselectable="on"></span></span><span class="ke-outline" data-name="emoticons" title="插入表情" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-emoticons" unselectable="on"></span></span><span class="ke-outline" data-name="shcode" title="插入程序代码或脚本" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-shcode" unselectable="on"></span></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span><span class="ke-outline" data-name="quote" title="引用某段文字" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-quote" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="source" title="HTML代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-source" unselectable="on"></span></span><span class="ke-outline" data-name="about" title="关于" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-about" unselectable="on"></span></span></div><div style="display: block; height: 121px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 121px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 121px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon" style="visibility: hidden;"></span></div></div><textarea id="txt_answner" name="body" style="width: 650px; height: 160px; display: none;"></textarea>
+                <input type="submit" value=" 发表评论 " id="FormSubmitButton" class="rndbutton">
+                <span id="form_msg" style="display:none;"></span>
+                <br><br>
+                <a href="http://www.oschina.net/question/565065_86025#answers">回评论顶部</a>&nbsp;|&nbsp;<a href="http://www.oschina.net/question/565065_86025#top">回页面顶部</a>
+            </form>
+            <div class="clear"></div>
+            <script>
+                $('#form_answer').ajaxForm({
+                    dataType: 'json',
+                    beforeSerialize: function ($form, options) {
+                        editor.sync();
+                    },
+                    beforeSubmit: function () {
+                        $('#FormSubmitButton').attr('disabled', 'disabled');
+                        $('#form_msg').html("<span class='ajax_processing'>正在提交评论，请稍候...</span>");
+                        $('#form_msg').show();
+                    },
+                    success: function (json) {
+                        $('#FormSubmitButton').removeAttr('disabled');
+                        if (json.msg) {
+                            $('#form_msg').html("<span class='error_msg'>" + json.msg + "</span>");
+                            $('#form_msg').show();
+                        }
+                        else if (json.id) {
+                            ajax_get("/question/show_answer?_answer_id=" + json.id, true, function (data) {
+                                                                    $('.QuestionReplies ul.list').append(data);
+                                                                editor.html('');
+                                $('.answer_count').html(json.answer_count);
+                            });
+                            $('#form_msg').hide();
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    
+<script type="text/javascript" src="./Git 常用命令详解（二）_files/xregexp-min.js"></script>
+<script type="text/javascript" src="./Git 常用命令详解（二）_files/shCore.min.js"></script>
+<script type="text/javascript" src="./Git 常用命令详解（二）_files/shAutoloader.js"></script>
+<link type="text/css" rel="stylesheet" href="./Git 常用命令详解（二）_files/shCore.css">
+<link type="text/css" rel="Stylesheet" href="./Git 常用命令详解（二）_files/shThemeDefault.css">
+
+<script type="text/javascript">
+    SyntaxHighlighter.autoloader(
+            'applescript			/js/sh309/scripts/shBrushAppleScript.js?t=1445088768000',
+            'actionscript3 as3		/js/sh309/scripts/shBrushAS3.js?t=1445088768000',
+            'bash shell				/js/sh309/scripts/shBrushBash.js?t=1445088768000',
+            'coldfusion cf			/js/sh309/scripts/shBrushColdFusion.js?t=1445088768000',
+            'cpp c					/js/sh309/scripts/shBrushCpp.js?t=1445088768000',
+            'obj-c objc				/js/sh309/scripts/shBrushObjC.js?t=1445088768000',
+            'c# c-sharp csharp		/js/sh309/scripts/shBrushCSharp.js?t=1445088768000',
+            'css					/js/sh309/scripts/shBrushCss.js?t=1445088768000',
+            'delphi pascal			/js/sh309/scripts/shBrushDelphi.js?t=1445088768000',
+            'diff patch pas			/js/sh309/scripts/shBrushDiff.js?t=1445088768000',
+            'erl erlang				/js/sh309/scripts/shBrushErlang.js?t=1445088768000',
+            'groovy					/js/sh309/scripts/shBrushGroovy.js?t=1445088768000',
+            'haxe hx				/js/sh309/scripts/shBrushHaxe.js?t=1445088768000',
+            'java					/js/sh309/scripts/shBrushJava.js?t=1445088768000',
+            'jfx javafx				/js/sh309/scripts/shBrushJavaFX.js?t=1445088768000',
+            'js jscript javascript	/js/sh309/scripts/shBrushJScript.js?t=1445088768000',
+            'perl pl				/js/sh309/scripts/shBrushPerl.js?t=1445088768000',
+            'php					/js/sh309/scripts/shBrushPhp.js?t=1445088768000',
+            'text plain				/js/sh309/scripts/shBrushPlain.js?t=1445088768000',
+            'py python				/js/sh309/scripts/shBrushPython.js?t=1445088768000',
+            'ruby rails ror rb		/js/sh309/scripts/shBrushRuby.js?t=1445088768000',
+            'scala					/js/sh309/scripts/shBrushScala.js?t=1445088768000',
+            'sql					/js/sh309/scripts/shBrushSql.js?t=1445088768000',
+            'vb vbnet				/js/sh309/scripts/shBrushVb.js?t=1445088768000',
+            'xml xhtml xslt html	/js/sh309/scripts/shBrushXml.js?t=1445088768000'
+    );
+    SyntaxHighlighter.all();
+</script>
+    <div class="QuestionRelations">
+        <div id="QuestionWizard">
+            有什么技术问题吗？
+            <a href="http://www.oschina.net/question/ask" class="rndbutton"><span>我要提问</span></a>
+
+            <div class="clear"></div>
+        </div>
+            					<div style="text-align:center;margin-bottom:10px;">
+		<a name="question_banner_one">
+		</a><a href="http://www.jpush.cn/" target="_blank" title="极光推送">
+			<img src="./Git 常用命令详解（二）_files/question_banner_one_MxxUQ.jpg" width="250" height="250">
+		</a>
+		 </div>
+	                    <div class="AskerCard">
+                                        <div id="OtherQuestionsOfUser" class="Qlist">
+                    <strong><a href="http://my.oschina.net/changpinghu/?ft=bbs&scope=2&showme=1" class="more">全部(7353
+                        )</a>长平狐的其它问题</strong>
+                    <ul>
+                                                                                    <li><a href="http://www.oschina.net/question/565065_139067" title="使用 UITableView 创建表格应用演练(2)——从plist文件加载并显示数据">使用 UITableView 创建表格应用演练(2)——从plist文件加载并显示数据</a><span class="date">(0回/618
+                                    阅,2年前)</span></li>                                                                                    <li><a href="http://www.oschina.net/question/565065_139066" title="使用 UITableView 创建表格应用演练(4)——自定义单元格">使用 UITableView 创建表格应用演练(4)——自定义单元格</a><span class="date">(0回/450
+                                    阅,2年前)</span></li>                                                                                    <li><a href="http://www.oschina.net/question/565065_139065" title="使用 UITableView 创建表格应用演练(1)——一个简单的表格应用">使用 UITableView 创建表格应用演练(1)——一个简单的表格应用</a><span class="date">(0回/444
+                                    阅,2年前)</span></li>                                                                                    <li><a href="http://www.oschina.net/question/565065_139064" title="iOS7初体验(3)——图像资源Images Assets">iOS7初体验(3)——图像资源Images Assets</a><span class="date">(0回/498
+                                    阅,2年前)</span></li>                                                                                    <li><a href="http://www.oschina.net/question/565065_139063" title="Cocos2d学习笔记(1)——安装模板及ARC支持">Cocos2d学习笔记(1)——安装模板及ARC支持</a><span class="date">(0回/366
+                                    阅,2年前)</span></li>                                            </ul>
+                </div>
+                    </div>
+        			
+        <div class="google_ads" style="margin:20px 0;">
+        <a href="http://bbs.apistore.baidu.com/forum.php?mod=viewthread&tid=679&extra=page%3D1&hmsr=%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD-API%E8%B0%83%E7%94%A8%E7%8B%82%E6%AC%A2%EF%BC%88H%EF%BC%89&hmpl=API%E8%B0%83%E7%94%A8%E7%8B%82%E6%AC%A2&hmcu=&hmkw=&hmci=" target="_blank"><img src="./Git 常用命令详解（二）_files/110219_LFTs_865233.png" alt="" border="0"></a>
+                    </div>
+                    
+        <div id="Similarity" class="Qlist">
+                                        <strong>类似的话题</strong>
+                <ul>
+                                                                        <li><a href="http://www.oschina.net/question/12_7614" title="Git 改变了分布式 Web 开发规则">Git 改变了分布式 Web 开发规则</a><span class="date">(0回/3232
+                                阅,6年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/132822_33177" title="如何让 git diff 显示完整信息">如何让 git diff 显示完整信息</a><span class="date">(1回/1830
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/54100_25448" title="git 安装使用笔记">git 安装使用笔记</a><span class="date">(9回/9629
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/17793_25632" title="理解Git工作流--转帖">理解Git工作流--转帖</a><span class="date">(2回/1156
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/69166_27066" title="Git 开源中文教程 《Pro Git》">Git 开源中文教程 《Pro Git》</a><span class="date">(11回/5261
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/55577_28210" title="【转】一个成功的Git分支模型">【转】一个成功的Git分支模型</a><span class="date">(6回/2305
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/17793_28589" title="用GIT时，WINDOWS里坑爹的CMD，BASH就OK">用GIT时，WINDOWS里坑爹的CMD，BASH就OK</a><span class="date">(2回/1467
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/17793_28643" title="简单GIT测试批处理">简单GIT测试批处理</a><span class="date">(0回/350
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/1705_17686" title="大家进来讨论一下【用git来备份网站的文件数据！】">大家进来讨论一下【用git来备份网站的文件数据！】</a><span class="date">(4回/512
+                                阅,5年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/97818_11644" title="【帮推】Git Community Book 中译本">【帮推】Git Community Book 中译本</a><span class="date">(0回/644
+                                阅,5年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/249672_54602" title="Git 不适合公司内部组织使用，正式放弃GIT方式开发。。。。">Git 不适合公司内部组织使用，正式放弃GIT方式开发。。。。</a><span class="date">(65回/17864
+                                阅,3年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/54100_55379" title="最简单的 Git 使用流程">最简单的 Git 使用流程</a><span class="date">(40回/24780
+                                阅,3年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/54100_74533" title="一张图展示 Git 常用命令">一张图展示 Git 常用命令</a><span class="date">(8回/2960
+                                阅,3年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/249672_44674" title="git-init执行的问题，我又弱智了，希望大家别像我这样">git-init执行的问题，我又弱智了，希望大家别像我这样</a><span class="date">(3回/2769
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/17793_45044" title="GIT 测试卷">GIT 测试卷</a><span class="date">(5回/1131
+                                阅,4年前)</span></li>                                                                        <li><a href="http://www.oschina.net/question/129038_175513" title="基于git的绿色软件分发、安装和更新 ">基于git的绿色软件分发、安装和更新 </a><span class="date">(0回/174
+                                阅,1年前)</span></li>                                    </ul>
+                    </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script type="text/javascript" src="./Git 常用命令详解（二）_files/kindeditor-min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    <!--
+    var editor;
+    KindEditor.ready(function (K) {
+        editor = K.create('#txt_answner', {
+            themeType: 'oschina',
+            resizeType: 1,
+            urlType: 'domain',
+            shadowMode: false,
+            allowPreviewEmoticons: false,
+            allowImageUpload: true,
+            allowFlashUpload: false,
+            cssPath: '/css/ke-oschina.css?t=1445088728000',
+            uploadJson: '/action/blog/upload_img',
+            afterCreate: function () {
+                /*
+                K.ctrl(this.edit.iframe.get(0).contentWindow.document, 13, function() {
+                    $("#txt_answner").parent().submit();
+			});
+			*/
+                $(this.edit.iframe.get(0).contentWindow.document).keydown(function (e) {
+                    if ((e.ctrlKey || e.metaKey) && e.which == 13 && !e.shiftKey && !e.altKey) {
+                        $("#txt_answner").parent().submit();
+                    }
+                });
+            },
+            afterChange: function () {
+                this.sync();
+            },
+            items: ['bold', 'italic', 'underline', 'strikethrough', 'removeformat', '|', 'insertorderedlist', 'insertunorderedlist',
+                'forecolor', 'hilitecolor', 'fontname', 'fontsize', '|', 'link', 'unlink', 'emoticons',
+                'shcode', 'image', 'flash', 'quote', '|', 'source', 'about'],
+            htmlTags: {
+                script: ['src'],
+                font: ['color', 'size', 'face', '.background-color'],
+                span: [
+                    '.color', '.background-color', '.font-size', '.font-family', '.background',
+                    '.font-weight', '.font-style', '.text-decoration', '.vertical-align', '.line-height'
+                ],
+                div: [
+                    'class', 'align', '.border', '.margin', '.padding', '.text-align', '.color',
+                    '.background-color', '.font-size', '.font-family', '.font-weight', '.background',
+                    '.font-style', '.text-decoration', '.vertical-align', '.margin-left'
+                ],
+                table: [
+                    'border', 'cellspacing', 'cellpadding', 'width', 'height', 'align', 'bordercolor',
+                    '.padding', '.margin', '.border', 'bgcolor', '.text-align', '.color', '.background-color',
+                    '.font-size', '.font-family', '.font-weight', '.font-style', '.text-decoration', '.background',
+                    '.width', '.height', '.border-collapse'
+                ],
+                'td,th': [
+                    'align', 'valign', 'width', 'height', 'colspan', 'rowspan', 'bgcolor',
+                    '.text-align', '.color', '.background-color', '.font-size', '.font-family', '.font-weight',
+                    '.font-style', '.text-decoration', '.vertical-align', '.background', '.border'
+                ],
+                a: ['href', 'target', 'name'],
+                embed: ['src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', '.width', '.height', 'align', 'allowscriptaccess'],
+                img: ['src', 'width', 'height', 'border', 'alt', 'title', 'align', '.width', '.height', '.border'],
+                'p,ol,ul,li,blockquote,h1,h2,h3,h4,h5,h6': [
+                    'align', '.text-align', '.color', '.background-color', '.font-size', '.font-family', '.background',
+                    '.font-weight', '.font-style', '.text-decoration', '.vertical-align', '.text-indent', '.margin-left'
+                ],
+                pre: ['class'],
+                hr: ['class', '.page-break-after'],
+                'br,tbody,tr,strong,b,sub,sup,em,i,u,strike,s,del': []
+            }
+        });
+    });
+    //-->
+</script>
+<!--[if lt IE 7]>
+<script type="text/javascript" src="/js/minmax.js?t=1445088755000  </script>
+<![endif]-->
+<script type="text/javascript" src="./Git 常用命令详解（二）_files/question"></script>
+<script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+        $.ajax({
+            url: "/action/favorite/attentionUsersCount",
+            type: "get",
+            data: "id="+86025+"&type="+2,
+            success: function (msg) {
+                $("#favor_trigger").html("收藏(" + msg + ")");
+            }
+        });
+        $('.Answer .replies li').hover(
+                function () {
+                    $(this).addClass('hover');
+                },
+                function () {
+                    $(this).removeClass('hover');
+                }
+        );
+
+        $('.detail img').css('cursor', 'pointer');
+        jQuery.each($('.detail img'), function (idx, v) {
+            if (!$(v).parent().is("a")) {
+                $(v).wrap("<a href='" + $(this).attr('src') + "' target='_blank'></a>");
+            }
+        });
+
+        $('#c').bind('mouseover mouseout', function () {
+            $('#c_on').toggle();
+            $('#c_off').toggle();
+        });
+
+        $('#favor_trigger').click(function () {
+                            add_to_favor(86025,2);
+                    });
+    });
+    function ask_too(qid, ask) {
+        ajax_post("/action/question/ask_too?id=" + qid + "&ask=" + ask, "", function (html) {
+            json = eval('(' + html + ')');
+            if (json.asker_count >= 0) {
+                $('#c_asker_count').html(json.asker_count);
+                if (json.ask_mode)
+                    $('#RQuestionAction').html("<span class='rect'>已问同一问题 | <a href='javascript:ask_too(86025,false)'>取消？</a></span>");
+                else
+                    $('#RQuestionAction').html("<a href='javascript:ask_too(86025,true)' class='rndbutton'><span>我想问同样的问题</span></a>");
+            }
+            else {
+                $('#RQuestionAction').poshytip({
+                    className: 'tip-yellowsimple',
+                    content: json.msg,
+                    showOn: 'none',
+                    alignTo: 'target',
+                    alignX: 'center',
+                    alignY: 'top',
+                    offsetY: 6
+                });
+                $('#RQuestionAction').poshytip('show');
+                var t = setTimeout(function () {
+                    clearTimeout(t);
+                    $('#RQuestionAction').poshytip('destroy');
+                }, 4000);
+            }
+        });
+    }
+    function delete_q(qid) {
+        if (!confirm("您确认要删除此问题吗，删除的数据不可恢复？"))
+            return;
+                ajax_post("/action/question/delete?id=" + qid + "&hash=1523428741", "", function (html) {
+            if (html.length > 0)
+                alert(html);
+            else {
+                location.href = "/question";
+            }
+        });
+    }
+    function edit_answer(aid) {
+        location.href = "/question/edit_answer?id=" + aid;
+    }
+    function delete_answer(aid, hash) {
+        if (!confirm("您确认要删除此答案吗，删除的数据不可恢复？"))
+            return;
+        ajax_post("/action/question/delete_answer?id=" + aid + "&hash=" + hash, "", function (html) {
+            if (html.length > 0)
+                alert(html);
+            else {
+                $('#answer_' + aid).fadeOut();
+                $('#vote_' + aid).fadeOut();
+                $('#answer_' + aid).next('.hr').fadeOut();
+            }
+        });
+    }
+    function delete_post_reply(aid, hash) {
+        if (!confirm("您确认要删除此评论吗，删除的数据不可恢复？"))
+            return;
+        ajax_post("/action/question/delete_answer?id=" + aid + "&hash=" + hash, "", function (html) {
+            if (html.length > 0)
+                alert(html);
+            else {
+                $('#PostReply_' + aid).fadeOut();
+            }
+        });
+    }
+    function delete_q_rpl(qid, rid) {
+        if (!confirm("删除补充说明会被扣威望值，是否继续？"))
+            return;
+        ajax_post("/action/question/delete_detail?id=" + rid, "", function (html) {
+            if (html.length > 0)
+                alert(html);
+            else
+                $("#q_reply_" + rid).fadeOut();
+        });
+    }
+    function close_tip(tid) {
+        $('#' + tid).poshytip('destroy');
+    }
+    //答案投票
+    function vote_answer(qid, vote_up, need_confirm) {
+        if (need_confirm && !vote_up) {
+            if (!$('#a_post_votedown_' + qid).hasClass('bold')) {
+                var vote_down_confirm_msg = "<p>此操作将会扣掉你1个积分，是否继续？</p><p style='margin-top:10px;'><a href='javascript:vote_answer(" + qid + ",false,false)' class='rbtn' style='margin:0 10px 0 50px;'><span>确定</span></a><a href=\"javascript:close_tip('a_post_votedown_" + qid + "')\" class='rbtn'><span>取消</span></a></p>";
+                $('#a_post_votedown_' + qid).poshytip({
+                    className: 'tip-yellowsimple',
+                    content: vote_down_confirm_msg,
+                    showOn: 'none',
+                    slide: false,
+                    fade: false,
+                    alignTo: 'target',
+                    alignX: 'center',
+                    offsetY: 8
+                });
+                $('#a_post_votedown_' + qid).poshytip('show');
+                return;
+            }
+        }
+        if (!need_confirm) {
+            $('#a_post_votedown_' + qid).poshytip('destroy');
+        }
+        ajax_post("/action/question/vote_answer?id=" + qid + "&vote=" + vote_up + "&user=", "", function (data) {
+            json = eval('(' + data + ')');
+            if (json.msg) {
+                var aid = vote_up ? "a_post_voteup_" : "a_post_votedown_";
+                aid += qid;
+                $('#' + aid).poshytip({
+                    className: 'tip-yellowsimple',
+                    content: json.msg,
+                    showOn: 'none',
+                    alignTo: 'target',
+                    alignX: 'center',
+                    alignY: 'top',
+                    offsetY: 6
+                });
+                $('#' + aid).poshytip('show');
+                var t = setTimeout(function () {
+                    clearTimeout(t);
+                    $('#' + aid).poshytip('destroy');
+                }, 2000);
+                //jQuery.fancybox("<div class='error_box'>"+json.msg+"</div>");
+            }
+            else {
+                if (vote_up) {
+                    $('#post_voteup_' + qid).html('(' + json.vote + ')');
+                    var a_post_voteup = $('#a_post_voteup_' + qid);
+                    if (a_post_voteup.attr('class').indexOf("vote-up-off") != -1) {
+                        $('#a_post_voteup_' + qid).attr('class', 'vote-up-on');
+                        $('#a_post_voteup_' + qid).attr('title', '取消支持票');
+                        $('#a_vote_num_' + qid).html(parseInt($('#a_vote_num_' + qid).html()) + 1);
+                    } else {
+                        $('#a_post_voteup_' + qid).attr('class', 'vote-up-off');
+                        $('#a_post_voteup_' + qid).attr('title', '投支持票');
+                        $('#a_vote_num_' + qid).html(parseInt($('#a_vote_num_' + qid).html()) - 1);
+                    }
+                } else {
+                    $('#post_votedown_' + qid).html('(' + json.vote + ')');
+                    var a_post_votedown = $('#a_post_votedown_' + qid);
+                    if (a_post_votedown.attr('class').indexOf("vote-down-off") != -1) {
+                        a_post_votedown.attr('class', 'vote-down-on').attr('title', '取消反对票');
+                        $('#a_vote_num_' + qid).html(parseInt($('#a_vote_num_' + qid).html()) - 1);
+                    } else {
+                        a_post_votedown.attr('class', 'vote-down-off');
+                        a_post_votedown.attr('title', '投反对票');
+                        $('#a_vote_num_' + qid).html(parseInt($('#a_vote_num_' + qid).html()) + 1);
+                    }
+                }
+            }
+        });
+    }
+    //问题投票
+    $('#vote_up').click(function () {
+        if (this.clickTimeout) {
+            // 双击
+            clearTimeout(this.clickTimeout);
+            this.clickTimeout = null;
+            alert("不用那么费劲啦，点击一下就够了:)");
+        }
+        else {
+            // 单击
+            var elem = this;
+            this.clickTimeout = setTimeout(function () {
+                // 执行点击动作
+                elem.clickTimeout = null;
+                vote_question(86025, true, true);
+            }, 250);
+        }
+        //阻止链接onclick时的默认行为
+        return false;
+    });
+    $('#vote_down').click(function () {
+        vote_question(86025, false, true);
+        /*
+        if(this.clickTimeout){
+            // 双击
+            clearTimeout(this.clickTimeout);
+            this.clickTimeout = null;
+            alert("不用那么费劲啦，点击一下就够了:)");
+        }
+        else{
+            // 单击
+            var elem = this;
+            this.clickTimeout = setTimeout(function(){
+                // 执行点击动作
+                elem.clickTimeout = null;
+                vote_question(86025,false, true);
+        }, 250);
+    }
+    //阻止链接onclick时的默认行为
+	*/
+        return false;
+    });
+    function vote_question(qid, vote_up, need_confirm) {
+        if (need_confirm && !vote_up) {
+            if ($('#Vote #vote_down').hasClass('ask_vote_down')) {
+                var vote_down_confirm_msg = "<p>踩问题将会扣掉你1个积分，是否继续？</p><p style='margin-top:10px;'><a href='javascript:vote_question(86025,false,false)' class='rbtn' style='margin-right:10px;'><span>确定</span></a><a href=\"javascript:close_tip('vote_down')\" class='rbtn'><span>取消</span></a></p>";
+                $('#Vote #vote_down').poshytip({
+                    className: 'tip-yellowsimple',
+                    content: vote_down_confirm_msg,
+                    slide: false,
+                    fade: false,
+                    showOn: 'none',
+                    alignTo: 'target',
+                    alignX: 'inner-right',
+                    alignY: 'bottom',
+                    offsetX: -35,
+                    offsetY: 5
+                });
+                $('#Vote #vote_down').poshytip('show');
+                return;
+            }
+        }
+        if (!need_confirm) {
+            $('#Vote #vote_down').poshytip('destroy');
+        }
+        ajax_post("/action/question/vote?user=&id=" + qid + "&vote=" + vote_up, "", function (data) {
+            json = eval('(' + data + ')');
+            if (json.msg) {
+                var aid = vote_up ? "vote_up" : "vote_down";
+                $('#' + aid).poshytip({
+                    className: 'tip-yellowsimple',
+                    content: json.msg,
+                    showOn: 'none',
+                    alignTo: 'target',
+                    alignX: 'inner-right',
+                    alignY: 'bottom',
+                    offsetX: 5,
+                    offsetX: -35
+                });
+                $('#' + aid).poshytip('show');
+                var t = setTimeout(function () {
+                    clearTimeout(t);
+                    $('#' + aid).poshytip('destroy');
+                }, 2000);
+            }
+            else {
+                            if (vote_up) {
+                    $('#Vote .vote-up-count').html(json.vote_up);
+                    if ($('#vote_up').attr('class').indexOf("vote-up-off") != -1) {
+                        $('#vote_up').attr('class', 'vote-up-on');
+                        $('#vote_up').attr('title', '取消顶');
+                        $('.q_vote_num').html(parseInt($('.q_vote_num').html()) + 1);
+                    } else {
+                        $('#vote_up').attr('class', 'vote-up-off');
+                        $('#vote_up').attr('title', '顶：这问题很有用或者很提问清晰明了');
+                        $('.q_vote_num').html(parseInt($('.q_vote_num').html()) - 1);
+                    }
+                }
+                else {
+                    $('#Vote .vote-down-count').html(json.vote_down);
+                    if ($('#vote_down').attr('class').indexOf("vote-down-off") != -1) {
+                        $('#vote_down').attr('class', 'vote-down-on');
+                        $('#vote_down').attr('title', '取消踩');
+                        $('.q_vote_num').html(parseInt($('.q_vote_num').html()) - 1);
+                    } else {
+                        $('#vote_down').attr('class', 'vote-down-off');
+                        $('#vote_down').attr('title', '踩：这问题不知道在问什么，或者没什么用');
+                        $('.q_vote_num').html(parseInt($('.q_vote_num').html()) + 1);
+                    }
+                }
+            }
+        });
+    }
+    //评论答案
+    function reply_to_post(postid, uid) {
+            url = "/action/ajax/reply_to_post?id=" + postid + "&refer=" + uid
+        ajax_post(url, "", function (data) {
+            $.fancybox({
+                content: data,
+                onComplete: function () {
+                    $input = $('#ta_body');
+                        $input.focus();
+                    pos = $input.val()?$input.val().length: 0;
+                    if (document.selection) {
+                        range = $input[0].createTextRange();
+                        range.move("character", pos);
+                        range.select();
+                    } else {
+                        if ($input[0])
+                            $input[0].setSelectionRange(pos, pos);
+                    }
+                }
+            });
+        });
+    }
+
+    function show_rp_next(postid, current, total) {
+        if (current < total) {
+            var next_page = current + 1;
+            var url = "/question/post_replies?answer=" + postid + "&rp=" + next_page;
+            ajax_post(url, "", function (html) {
+                $('#PostReplies_' + postid).html(html);
+                addRepliesHoverEvent();
+            });
+        }
+    }
+
+    function addRepliesHoverEvent() {
+        $("li [id ^= 'PostReply']").hover(function () {
+            $(this).addClass("hover");
+        }, function () {
+            $(this).removeClass("hover");
+        });
+    }
+
+    function show_rp_prev(postid, current, total) {
+        if (current > 1) {
+            var next_page = current - 1;
+            var url = "/question/post_replies?answer=" + postid + "&rp=" + next_page;
+            ajax_post(url, "", function (html) {
+                $('#PostReplies_' + postid).html(html);
+                addRepliesHoverEvent();
+            });
+        }
+    }
+    function mark_as_top(qid, as_top) {
+        var args = "id=" + qid + "&top=" + as_top;
+        ajax_post("/action/question/mark_as_top", args, function (html) {
+            alert(html);
+        });
+    }
+    function mark_as_best(postid, is_best) {
+        var args = "id=" + postid + "&best=" + (is_best ? 1 : 0);
+        ajax_post("/action/question/mark_as_best", args, function (html) {
+            if (html.length > 0) {
+                $('#best_answer_' + postid).poshytip({
+                    className: 'tip-yellowsimple',
+                    content: html,
+                    showOn: 'none',
+                    alignTo: 'target',
+                    alignX: 'center',
+                    alignY: 'top',
+                    offsetY: 6
+                });
+                $('#best_answer_' + postid).poshytip('show');
+                var t = setTimeout(function () {
+                    clearTimeout(t);
+                    $('#best_answer_' + postid).poshytip('destroy');
+                }, 2000);
+            }
+            else {
+                if (is_best) {
+                    $('#answer_' + postid).addClass('Best');
+                    $('#best_answer_' + postid).attr('class', 'accept-on')
+                            .attr('href', 'javascript:mark_as_best(' + postid + ',false)')
+                            .attr('title', '取消标记为最佳答案');
+                } else {
+                    $('#answer_' + postid).removeClass('Best');
+                    $('#best_answer_' + postid).attr('class', 'accept-off')
+                            .attr('href', 'javascript:mark_as_best(' + postid + ',true)')
+                            .attr('title', '标记为最佳答案');
+                }
+            }
+        });
+    }
+    function edit_tags(qid) {
+        popup("/question/edit_tags?question=" + qid);
+    }
+    function edit_catalogs(qid) {
+        popup("/admin/catalog/set-catalogs?parent=1&type=2&id=" + qid);
+    }
+    function event_apply(event_id) {
+        popup("/action/ajax/event_apply", "id=" + event_id);
+    }
+    function cancel_apply(event_id) {
+        if (confirm("您确认要取消参加此次活动吗？")) {
+            ajax_post("/action/event/cancel", "event=" + event_id, function (html) {
+                if (html.length > 0)
+                    alert(html);
+                else
+                    alert('已取消参加此次活动，感谢您的支持:)');
+            });
+        }
+    }
+
+    var favor_ok = "<p class='favor_ok'>已成功添加到收藏夹<br/><br/> <a href='null/favorites?type=$DAISY_OBJ_TYPE'>我的收藏夹</a> | <a href='javascript:close_favor()'>关闭</a></p>";
+    function delete_favor(obi_id, obj_type) {
+        if (!confirm('确定取消收藏？')) return;
+        $.post("/action/favorite/cancel?type=" + obj_type + "&id=" + obi_id + "&user=", function (html) {
+            $('#favor_trigger').parent('div').removeClass('ask_collected').addClass('ask_collect');
+            $('#favor_trigger').attr('title', '添加到收藏');
+            $('#p_favor_count').html(html);
+            $('#favor_trigger').unbind('click');
+            $('#favor_trigger').click(function () {
+                add_to_favor(86025,2);
+            });
+        });
+    }
+    function add_to_favor(obj_id, obj_type) {
+                    if (confirm('必须登录后才能收藏，是否现在登录？')) {
+                location.href = "http://www.oschina.net/home/login?goto_page=" + location.href;
+            }
+            }
+    function close_favor(elem_id) {
+        $('#favor_trigger').poshytip('destroy');
+    }
+    function setTag(tv) {
+        var t = $("._favor_input");
+        var value = t.val();
+        var tags = value.replace(/，/ig, ',').split(',');
+        var exist = false;
+        value = $.map(tags, function (v, i) {
+            if ($.trim(tv) == $.trim(v)) {
+                exist = true;
+                return undefined;
+            }
+            return v;
+        }).join(',');
+        if (exist) {
+            t.val(value);
+            return;
+        }
+        if (value != "")
+            t.val(value + "," + tv);
+        else
+            t.val(tv)
+    }
+    //-->
+</script><div class="clear"></div></div>
+	<div id="OSC_Footer" class="CenterDiv"><style>
+.oscapp {text-align:left; width:220px;}
+.oscapp span {float:left;width:140px;}
+.oscapp a {float:left;text-indent:-9999em;width:16px;margin-left:8px;}
+.oscapp a.android {background:url('/img/android.gif') no-repeat left center;}
+.oscapp a.iphone {background:url('/img/iphone.gif') no-repeat left center;}
+.oscapp a.wp7 {background:url('/img/wp7.gif') no-repeat left center;}
+</style>
+<table width="100%"><tbody><tr>
+<td align="left">© 开源中国(OSChina.NET) | <a href="http://www.oschina.net/home/aboutosc">关于我们</a> | <a href="mailto:market@oschina.cn">广告联系</a> | <a href="http://weibo.com/oschina2010" target="_blank">@新浪微博</a> | <a href="http://m.oschina.net/">开源中国手机版</a> | <a href="http://www.miitbeian.gov.cn/" target="_blank" style="color:#737573;text-decoration:none;">粤ICP备12009483号-3</a></td>
+<td class="oscapp">
+	<span>开源中国手机客户端：</span>
+	<a href="http://www.oschina.net/app" class="android" title="Android客户端">Android</a>
+	<a href="http://www.oschina.net/app" class="iphone" title="iPhone 客户端">iPhone</a>
+	<a href="http://www.oschina.net/app" class="wp7" title="Windows Phone 客户端">WP7</a>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="left">开源中国社区(OSChina.net)是工信部 <a href="http://www.copu.org.cn/" target="_blank">开源软件推进联盟</a> 指定的官方社区</td>
+</tr>
+</tbody></table>
+<script type="text/javascript">
+<!--
+if (top.location != self.location)top.location=self.location;
+//-->
+</script></div>
+</div>
+
+
+<!-- Generated by OsChina.NET (init:0[ms],page:69[ms],ip:115.236.187.186) --><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div id="topcontrol" title="回到顶部" style="position: fixed; bottom: 120px; right: 100px; cursor: pointer; display: block;"><img src="./Git 常用命令详解（二）_files/gotop.gif" style="width:31px; height:31px;"></div></body></html>

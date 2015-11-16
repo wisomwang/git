@@ -1,0 +1,56 @@
+@charset "utf-8";
+#ihref_gg1 #ihref_body{
+	margin: 0px;
+	padding: 0px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	overflow: hidden;
+}
+#ihref_gg1{
+	position:relative;
+	margin: 0px auto;
+	z-index:99990;
+	width:700px;
+	text-align: center;
+	display: none;
+}
+#ihref_gg1 #ihref_body{
+	width: 700px;
+	/*border-bottom: solid 10px #428BD1;*/
+	margin: 0px auto 0px auto;
+	position: fixed;
+	/*top:50px;*/
+	box-shadow: 0px 0px 50px #000;
+}
+#ihref_gg1 #ihref_close{
+	font-size:12px;
+	color:white;
+	padding:5px 8px 5px 8px;
+	background-color:#000000;
+	position:absolute;
+	right:0px;
+	top:0px;
+	z-index:99992;
+}
+#ihref_gg_bj{
+	width: 700px;
+	height: 660px;
+	background-image: url('../img/bj.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+#ihref_gg_hb{
+	width: 350px;
+	height: 404px;
+	left: 175px;
+	position: absolute;
+	margin-top: 208px;
+	box-shadow: 0 3px 8px 10px rgba(0,0,0,.3);
+	border-radius: .8em;
+	overflow: hidden;
+}
+#ihref_gg_hb img{
+	width: 350px;
+}
